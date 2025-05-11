@@ -1,0 +1,241 @@
+<!-- Agrega este bloque en el <head> -->
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarta de Oreo Clásica | Dulces Tentaciones</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    </head>
+    
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">Dulces<span>Tentaciones</span></div>
+                    <div class="nav-links">
+                        <a href="#">Inicio</a>
+                        <a href="#">Tartas</a>
+                        <a href="#">Cupcakes</a>
+                        <a href="#">Contacto</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    
+        <section class="product-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-badge">La más vendida</span>
+                    <h1>⚡ TARTA DE OREO CLÁSICA</h1>
+                    <p class="hero-description">Locura de texturas: cremosidad, crujiente y ese toque irresistible a cacao. Un postre divertido, adictivo y perfecto para los amantes del chocolate.</p>
+                </div>
+                <div class="product-image">
+                    <div class="image-overlay">
+                        <h3>Tarta de Oreo Clásica</h3>
+                        <p>Base crujiente y relleno cremoso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="product-details">
+            <div class="container">
+                <div class="product-info">
+                    <h2 class="info-title">✨ Descripción</h2>
+                    <p>Nuestra Tarta de Oreo es un homenaje al clásico galleta que todos amamos. Base crujiente de Oreo, relleno cremoso de queso y trozos de galleta que estallan en tu boca. Un postre divertido, adictivo y perfecto para los amantes del chocolate.</p>
+                    
+                    <div class="allergens">
+                        <h4>ALERGENOS E INTOLERANCIAS</h4>
+                        <ul>
+                            <li>Contiene <strong>gluten</strong></li>
+                            <li>Contiene <strong>lácteos</strong></li>
+                            <li>Contiene <strong>soja</strong></li>
+                            <li>Puede contener trazas de frutos secos</li>
+                        </ul>
+                        <p><small>(Destacados en negrita según normativa UE)</small></p>
+                    </div>
+                </div>
+                
+                <div class="product-options">
+                    <div class="format-options">
+                        <h3 class="option-title">Formato</h3>
+                        <div class="options-grid">
+                            <div class="format-option selected" data-format="tarta">
+                                <span class="size-name">Tarta</span>
+                                <span class="size-portions">Tradicional</span>
+                            </div>
+                            <div class="format-option" data-format="cupcakes">
+                                <span class="size-name">Cupcakes</span>
+                                <span class="size-portions">Individuales</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="size-options" id="tarta-sizes">
+                        <h3 class="option-title">Tamaño Tarta</h3>
+                        <div class="options-grid">
+                            <div class="size-option selected" data-size="S" data-price="22">
+                                <span class="size-name">S</span>
+                                <span class="size-portions">10-12 porciones</span>
+                            </div>
+                            <div class="size-option" data-size="M" data-price="30">
+                                <span class="size-name">M</span>
+                                <span class="size-portions">14-16 porciones</span>
+                            </div>
+                            <div class="size-option" data-size="L" data-price="38">
+                                <span class="size-name">L</span>
+                                <span class="size-portions">18-20 porciones</span>
+                            </div>
+                            <div class="size-option" data-size="XL" data-price="48">
+                                <span class="size-name">XL</span>
+                                <span class="size-portions">26-30 porciones</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="size-options" id="cupcake-sizes" style="display: none;">
+                        <h3 class="option-title">Cantidad Cupcakes</h3>
+                        <div class="options-grid">
+                            <div class="size-option" data-size="S" data-price="15">
+                                <span class="size-name">S</span>
+                                <span class="size-portions">6 cupcakes</span>
+                            </div>
+                            <div class="size-option" data-size="M" data-price="28">
+                                <span class="size-name">M</span>
+                                <span class="size-portions">12 cupcakes</span>
+                            </div>
+                            <div class="size-option" data-size="L" data-price="40">
+                                <span class="size-name">L</span>
+                                <span class="size-portions">18 cupcakes</span>
+                            </div>
+                            <div class="size-option" data-size="XL" data-price="52">
+                                <span class="size-name">XL</span>
+                                <span class="size-portions">24 cupcakes</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="addon-options">
+                        <h3 class="option-title">Extras</h3>
+                        <div class="addon-option" data-price="5">
+                            <input type="checkbox" class="addon-checkbox" id="extreme-addon">
+                            <div class="addon-details">
+                                <span class="addon-name">Edición Extreme</span>
+                                <span class="addon-description">Doble capa de crema y extra trozos de Oreo</span>
+                            </div>
+                        </div>
+                        <div class="addon-option" data-price="3">
+                            <input type="checkbox" class="addon-checkbox" id="gift-addon">
+                            <div class="addon-details">
+                                <span class="addon-name">Para regalar</span>
+                                <span class="addon-description">Caja premium con mensaje personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-container">
+                        <div>
+                            <span class="original-price" id="original-price">€24.99</span>
+                            <span class="price-display" id="final-price">€22.00</span>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" id="decrease-quantity">-</button>
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                            <button class="quantity-btn" id="increase-quantity">+</button>
+                        </div>
+                    </div>
+                    
+                    <button class="add-to-cart" id="add-to-cart-btn">Añadir al carrito</button>
+                </div>
+            </div>
+        </section>
+    
+        <section class="reasons-section">
+            <div class="container">
+                <h2 class="section-title">🔥 3 RAZONES PARA ELEGIRLA</h2>
+                <div class="reasons-grid">
+                    <div class="reason-card">
+                        <div class="reason-icon">🍰</div>
+                        <h3 class="reason-title">Textura loca</h3>
+                        <p>Cremosidad + crunch en cada bocado, una combinación perfecta que hace única a nuestra tarta.</p>
+                    </div>
+                    <div class="reason-card">
+                        <div class="reason-icon">🍪</div>
+                        <h3 class="reason-title">Sabor auténtico</h3>
+                        <p>Como la galleta, pero en versión premium. El auténtico sabor Oreo llevado a otro nivel.</p>
+                    </div>
+                    <div class="reason-card">
+                        <div class="reason-icon">📸</div>
+                        <h3 class="reason-title">Divertida y fotogénica</h3>
+                        <p>Perfecta para cumpleaños o celebraciones informales. ¡Prepárate para triunfar en Instagram!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="storage-section">
+            <div class="container">
+                <div class="storage-content">
+                    <div class="storage-image">
+                        <img src="/api/placeholder/500/350" alt="Conservación de la tarta">
+                    </div>
+                    <div class="storage-info">
+                        <h2 class="info-title">💡 CONSERVACIÓN Y CONSUMO</h2>
+                        <ul class="storage-list">
+                            <li>Mantener refrigerada (máximo 3 días)</li>
+                            <li>Servir fría para mejor textura</li>
+                            <li>Decorar con salsa caliente de chocolate al momento de servir</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-text">👉 ¡PIDE LA TUYA HOY!</h2>
+                <div class="cta-sparkles">💫💫 Porque la felicidad a veces viene en forma de galleta... y esta tarta lo demuestra 💫💫</div>
+                <a href="#" class="cta-btn" id="scroll-to-top">¡Quiero mi tarta!</a>
+            </div>
+        </section>
+    
+        <footer>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h3 class="footer-title">Dulces Tentaciones</h3>
+                        <p>Tartas artesanales para momentos especiales.</p>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Enlaces</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Catálogo</a></li>
+                            <li><a href="#">Sobre nosotros</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3 class="footer-title">Contacto</h3>
+                        <ul class="footer-links">
+                            <li>info@dulcestentaciones.com</li>
+                            <li>+34 600 123 456</li>
+                            <li>Calle Pastelería, 42</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Dulces Tentaciones. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    
+        <div class="cart-notification" id="cart-notification">
+            <div class="notification-icon">✅</div>
+            <div class="notification-message">Producto añadido al carrito</div>
+        </div>
+    
+       
