@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenar - Maldita Dulzura</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleform.css">
+    <!-- Same head as index.html -->
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="brand-name">Maldita Dulzura</div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="#carrito">Carrito</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1></h1>
+            <p class="page-description">Descubre nuestra gama completa de tentaciones irresistibles. 
+               Cada bocado es una experiencia pecaminosa que te hará volver por más.</p>
+        </div>
+    </section>
+   <!-- Same header as index.html -->
+
+    <main class="order-page">
+        <div class="order-steps">
+            <div class="step active" data-step="1">1. Producto</div>
+            <div class="step" data-step="2">2. Personalización</div>
+            <div class="step" data-step="3">3. Entrega</div>
+            <div class="step" data-step="4">4. Pago</div>
+        </div>
+
+
+
+        
+        <div class="order-confirmation" style="display: none;">
+            <div class="confirmation-content">
+                <img src="assets/confirmation-icon.svg" alt="Confirmación">
+                <h2>¡Pedido Confirmado!</h2>
+                <p>Gracias por tu pedido. Hemos enviado los detalles a tu correo electrónico.</p>
+                <p>Número de pedido: <strong id="order-number">MD12345</strong></p>
+                <a href="tracking.html?id=MD12345" class="btn">Seguir mi pedido</a>
+            </div>
+        </div>
+    </main>
+
+    <h1>Deliciosas Creaciones - Pedido Online</h1>
+    
+    <form id="cakeOrderForm" action="#" method="post">
+        <!-- Datos personales -->
+        <h2 class="heading">Información de Contacto</h2>
+        <div class="form-group">
+            <label for="name">Nombre completo:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        
+        <!-- Tipo de producto -->
+        <h2 class="heading">Detalles del Pedido</h2>
+        <div class="form-group">
+            <label for="productType">¿Qué deseas ordenar?</label>
+            <select id="productType" name="productType" required>
+                <option value="">-- Selecciona una opción --</option>
+                <option value="cake">Tarta</option>
+                <option value="cupcakes">Cupcakes</option>
+                <option value="both">Tarta y Cupcakes</option>
+            </select>
+        </div>
+        
+        <!-- Campos condicionales para tarta -->
+        <div id="cakeFields" class="conditional-field">
+            <h3>Detalles de la Tarta</h3>
+            
+            <div class="form-group">
+                <label for="cakeSize">Tamaño de la tarta:</label>
+                <select id="cakeSize" name="cakeSize">
+                    <option value="small">Pequeña (6-8 porciones)</option>
+                    <option value="medium">Mediana (10-12 porciones)</option>
+                    <option value="large">Grande (14-16 porciones)</option>
+                    <option value="extra">Extra grande (20+ porciones)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cakeFlavor">Sabor de la tarta:</label>
+                <select id="cakeFlavor" name="cakeFlavor">
+                    <option value="chocolate">Chocolate</option>
+                    <option value="vanilla">Vainilla</option>
+                    <option value="redvelvet">Red Velvet</option>
+                    <option value="carrot">Zanahoria</option>
+                    <option value="lemon">Limón</option>
+                    <option value="strawberry">Fresa</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cakeFilling">Relleno:</label>
+                <select id="cakeFilling" name="cakeFilling">
+                    <option value="none">Sin relleno</option>
+                    <option value="cream">Crema</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="fruit">Frutas</option>
+                    <option value="dulcedeleche">Dulce de leche</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="cakecCobertura">Cobertura:</label>
+                <select id="cakeCobertura" name="cakeCobertura">
+                    <option value="simple">Simple</option> 
+                    <option value="birthday">Cumpleaños</option>
+                    <option value="wedding">Boda</option>
+                    <option value="custom">Personalizada</option>
+                </select>
+            </div>
+            
+            <div id="customDecorationField" class="conditional-field">
+                <div class="form-group">
+                    <label for="customDecoration">Describe la decoración personalizada:</label>
+                    <textarea id="customDecoration" name="customDecoration" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Campos condicionales para cupcakes -->
+        <div id="cupcakeFields" class="conditional-field">
+            <h3>Detalles de los Cupcakes</h3>
+            
+            <div class="form-group">
+                <label for="cupcakeQuantity">Cantidad de cupcakes:</label>
+                <input type="number" id="cupcakeQuantity" name="cupcakeQuantity" min="6" step="6" value="12">
+                <small>(Mínimo 6 unidades, en múltiplos de 6)</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Sabores (puedes elegir varios):</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flavorChocolate" name="cupcakeFlavors[]" value="chocolate">
+                        <label for="flavorChocolate">Chocolate</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flavorVanilla" name="cupcakeFlavors[]" value="vanilla">
+                        <label for="flavorVanilla">Vainilla</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flavorRedVelvet" name="cupcakeFlavors[]" value="redvelvet">
+                        <label for="flavorRedVelvet">Red Velvet</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flavorLemon" name="cupcakeFlavors[]" value="lemon">
+                        <label for="flavorLemon">Limón</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="flavorStrawberry" name="cupcakeFlavors[]" value="strawberry">
+                        <label for="flavorStrawberry">Fresa</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="frostingType">Tipo de frosting:</label>
+                <select id="frostingType" name="frostingType">
+                    <option value="buttercream">Buttercream</option>
+                    <option value="cream_cheese">Queso crema</option>
+                    <option value="whipped">Nata montada</option>
+                    <option value="fondant">Fondant</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Decoraciones especiales:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="decSprinkles" name="cupcakeDecorations[]" value="sprinkles">
+                        <label for="decSprinkles">Sprinkles</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="decFruit" name="cupcakeDecorations[]" value="fruit">
+                        <label for="decFruit">Frutas</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="decFlowers" name="cupcakeDecorations[]" value="flowers">
+                        <label for="decFlowers">Flores</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="decToppers" name="cupcakeDecorations[]" value="toppers">
+                        <label for="decToppers">Toppers</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Campos comunes -->
+        <div class="form-group">
+            <label for="specialRequests">Comentarios o requisitos especiales:</label>
+            <textarea id="specialRequests" name="specialRequests" rows="4"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="deliveryDate">Fecha de entrega deseada:</label>
+            <input type="date" id="deliveryDate" name="deliveryDate" required>
+        </div>
+        
+        <button type="submit">Enviar Pedido</button>
+    </form>
+
+    <script>
+        // Función para mostrar u ocultar campos según la selección
+        function toggleFields() {
+            const productType = document.getElementById('productType').value;
+            const cakeFields = document.getElementById('cakeFields');
+            const cupcakeFields = document.getElementById('cupcakeFields');
+            
+            // Mostrar/ocultar campos de tarta
+            if (productType === 'cake' || productType === 'both') {
+                cakeFields.style.display = 'block';
+            } else {
+                cakeFields.style.display = 'none';
+            }
+            
+            // Mostrar/ocultar campos de cupcakes
+            if (productType === 'cupcakes' || productType === 'both') {
+                cupcakeFields.style.display = 'block';
+            } else {
+                cupcakeFields.style.display = 'none';
+            }
+            
+            // Restablecer campos si se cambia la selección
+            if (productType === '') {
+                cakeFields.style.display = 'none';
+                cupcakeFields.style.display = 'none';
+            }
+        }
+        
+        // Función para mostrar/ocultar campo de decoración personalizada
+        function toggleCustomDecoration() {
+            const decorationType = document.getElementById('cakeCobertura').value;
+            const customDecorationField = document.getElementById('customDecorationField');
+            
+            if (decorationType === 'custom') {
+                customDecorationField.style.display = 'block';
+            } else {
+                customDecorationField.style.display = 'none';
+            }
+        }
+        
+        // Validación de cantidad de cupcakes (múltiplos de 6)
+        function validateCupcakeQuantity() {
+            const quantity = document.getElementById('cupcakeQuantity');
+            
+            if (quantity.value % 6 !== 0) {
+                const newValue = Math.ceil(quantity.value / 6) * 6;
+                quantity.value = newValue;
+            }
+            
+            if (quantity.value < 6) {
+                quantity.value = 6;
+            }
+        }
+        
+        // Configurar event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar campos
+            toggleFields();
+            toggleCustomDecoration();
+            
+            // Event listeners
+            document.getElementById('productType').addEventListener('change', toggleFields);
+            document.getElementById('cakeCobertura').addEventListener('change', toggleCustomDecoration);
+            document.getElementById('cupcakeQuantity').addEventListener('change', validateCupcakeQuantity);
+            
+            // Validar formulario antes de enviar
+            document.getElementById('cakeOrderForm').addEventListener('submit', function(event) {
+                const productType = document.getElementById('productType').value;
+                
+                if (productType === 'cupcakes' || productType === 'both') {
+                    const flavors = document.querySelectorAll('input[name="cupcakeFlavors[]"]:checked');
+                    if (flavors.length === 0) {
+                        alert('Por favor, selecciona al menos un sabor para los cupcakes.');
+                        event.preventDefault();
+                        return;
+                    }
+                }
+                
+                // Aquí puedes agregar más validaciones si las necesitas
+            });
+        });
+    </script>
+    <script src="js/order.js"></script>
+</body>
+</html>
