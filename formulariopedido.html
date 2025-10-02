@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Tartas y Cupcakes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sailors+Condensed&family=Unica+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Unica One', cursive;
+        }
+        
+        h1, h2, h3, .section-title {
+            font-family: 'Sailors Condensed', sans-serif;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(239, 23, 131, 0.15);
+        }
+        
+        .form-header {
+            background-color: #ef1783;
+            color: white;
+            border-radius: 1rem 1rem 0 0;
+        }
+        
+        .form-section {
+            
+        }
+        
+        .btn-primary {
+            background-color: #ef1783;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #d01472;
+            transform: translateY(-2px);
+        }
+        
+        .conditional-field {
+            
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #ef1783;
+            box-shadow: 0 0 0 3px rgba(239, 23, 131, 0.2);
+            outline: none;
+        }
+        
+        .checkbox-custom {
+            display: inline-block;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+        }
+        
+        .checkbox-custom input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #ef1783;
+            border-radius: 4px;
+        }
+        
+        .checkbox-custom:hover input ~ .checkmark {
+            background-color: #f9f9f9;
+        }
+        
+        .checkbox-custom input:checked ~ .checkmark {
+            background-color: #ef1783;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .checkbox-custom input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .checkbox-custom .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .success-message {
+            background-color: #1d6be1;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .section-title {
+            color: #ef1783;
+        }
+        
+        .section-border {
+            border-color: #ef1783;
+        }
+        
+        .btn-secondary {
+            background-color: #ef1783;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d01472;
+        }
+        
+        .highlight {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-purple-100 min-h-screen py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="form-container">
+            <!-- Header -->
+            <div class="form-header p-6 text-center">
+                <h1 class="text-3xl font-bold">Pedido de Tartas y Cupcakes</h1>
+                <p class="mt-2 text-pink-100">Crea tu dulce perfecto con nosotros</p>
+            </div>
+
+            <form id="orderForm" class="p-6 space-y-8">
+                <!-- Información Personal -->
+                <div class="form-section">
+                    <h2 class="section-title text-xl font-semibold mb-4">Información Personal</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nombre completo *</label>
+                            <input type="text" id="nombre" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+                            <input type="tel" id="telefono" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tipo de Producto -->
+                <div class="form-section">
+                    <h2 class="section-title text-xl font-semibold mb-4">Tipo de Producto</h2>
+                    <div class="flex flex-wrap gap-6 justify-center md:justify-start">
+                        <label class="checkbox-custom">
+                            <input type="radio" name="tipoProducto" value="tartas-cheesecakes" onchange="toggleProductOptions()">
+                            <span class="checkmark"></span>
+                            Tartas y Cheesecakes
+                        </label>
+                        <label class="checkbox-custom">
+                            <input type="radio" name="tipoProducto" value="cupcakes" onchange="toggleProductOptions()">
+                            <span class="checkmark"></span>
+                            Cupcakes
+                        </label>
+                        <label class="checkbox-custom">
+                            <input type="radio" name="tipoProducto" value="personalizado" onchange="toggleProductOptions()">
+                            <span class="checkmark"></span>
+                            Pedido Personalizado
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Tartas y Cheesecakes -->
+                <div id="tartasSection" class="form-section conditional-field rounded-lg hidden">
+                    <h2 class="section-title text-xl font-semibold mb-4">Tartas y Cheesecakes</h2>
+                    <div class="space-y-6">
+                        <!-- Tartas -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="marcos-no-me-tientes">
+                                    <span class="checkmark"></span>
+                                    Marcos No Me Tientes
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="muerte-por-chocolate">
+                                    <span class="checkmark"></span>
+                                    Muerte por Chocolate
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="unicornio-fantastico">
+                                    <span class="checkmark"></span>
+                                    Unicornio Fantástico
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="naranja-que-cacao">
+                                    <span class="checkmark"></span>
+                                    Naranja que Cacao
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="tia-misu">
+                                    <span class="checkmark"></span>
+                                    Tía Misú
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="revolcon-fresnata">
+                                    <span class="checkmark"></span>
+                                    Revolcón con Fresnata
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Cheesecakes -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="que-lo-bailes">
+                                    <span class="checkmark"></span>
+                                    Que lo Bailes
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="mangotero">
+                                    <span class="checkmark"></span>
+                                    Mangotero
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="limon-ileso">
+                                    <span class="checkmark"></span>
+                                    Limón Ileso
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="tradicional">
+                                    <span class="checkmark"></span>
+                                    Tradicional
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="cacao-late">
+                                    <span class="checkmark"></span>
+                                    Cacao Late
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tartaSeleccionada" value="que-hore-oes">
+                                    <span class="checkmark"></span>
+                                    Que Hore Oes?
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Tamaño -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tamaño</label>
+                            <select id="tamanoTarta" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                                <option value="">Seleccionar tamaño</option>
+                                <option value="pequena">Pequeña (6-8 personas)</option>
+                                <option value="mediana">Mediana (10-12 personas)</option>
+                                <option value="grande">Grande (15-20 personas)</option>
+                                <option value="xl">Extra Grande (25+ personas)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalles de Cupcakes -->
+                <div id="cupcakesSection" class="form-section conditional-field rounded-lg hidden">
+                    <h2 class="section-title text-xl font-semibold mb-4">Detalles de los Cupcakes</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Cantidad</label>
+                            <select id="cantidadCupcakes" class="w-full px-3 py-2 border border-gray-300 rounded-md" onchange="updateFlavorOptions()">
+                                <option value="">Seleccionar cantidad</option>
+                                <option value="6">6 cupcakes</option>
+                                <option value="12">12 cupcakes</option>
+                                <option value="18">18 cupcakes</option>
+                                <option value="24">24 cupcakes</option>
+                                <option value="30">30 cupcakes</option>
+                                <option value="36">36 cupcakes</option>
+                                <option value="otro">Otra cantidad</option>
+                            </select>
+                            <div id="cantidadPersonalizada" class="mt-3 hidden">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">¿Cuántos cupcakes?</label>
+                                <input type="number" id="cantidadOtra" min="1" max="100" placeholder="Ej: 15" class="w-full px-3 py-2 border border-gray-300 rounded-md" onchange="updateFlavorOptions()">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <span id="flavorLabel">Sabores (selecciona la cantidad primero)</span>
+                            </label>
+                            <div id="flavorsContainer" class="space-y-3">
+                                <!-- Los selectores de sabores se generarán dinámicamente -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pedido Personalizado -->
+                <div id="personalizadoSection" class="form-section conditional-field rounded-lg hidden">
+                    <h2 class="section-title text-xl font-semibold mb-4">Pedido Personalizado</h2>
+                    <div class="space-y-6">
+                        <!-- Formato -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="tarta-redonda">
+                                    <span class="checkmark"></span>
+                                    Tarta Redonda
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="tarta-cuadrada">
+                                    <span class="checkmark"></span>
+                                    Tarta Cuadrada
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="tarta-rectangular">
+                                    <span class="checkmark"></span>
+                                    Tarta Rectangular
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="cupcakes">
+                                    <span class="checkmark"></span>
+                                    Cupcakes
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="cake-pops">
+                                    <span class="checkmark"></span>
+                                    Cake Pops
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="formatoPersonalizado" value="galletas">
+                                    <span class="checkmark"></span>
+                                    Galletas Decoradas
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Tamaño -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tamanoPersonalizado" value="pequeno">
+                                    <span class="checkmark"></span>
+                                    Pequeño (6-8 personas)
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tamanoPersonalizado" value="mediano">
+                                    <span class="checkmark"></span>
+                                    Mediano (10-12 personas)
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tamanoPersonalizado" value="grande">
+                                    <span class="checkmark"></span>
+                                    Grande (15-20 personas)
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tamanoPersonalizado" value="xl">
+                                    <span class="checkmark"></span>
+                                    Extra Grande (25+ personas)
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="tamanoPersonalizado" value="personalizado">
+                                    <span class="checkmark"></span>
+                                    Tamaño Personalizado
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Tipo de Bizcocho -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="vainilla">
+                                    <span class="checkmark"></span>
+                                    Vainilla
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="chocolate">
+                                    <span class="checkmark"></span>
+                                    Chocolate
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="red-velvet">
+                                    <span class="checkmark"></span>
+                                    Red Velvet
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="zanahoria">
+                                    <span class="checkmark"></span>
+                                    Zanahoria
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="limon">
+                                    <span class="checkmark"></span>
+                                    Limón
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="bizcochoPersonalizado" value="fresa">
+                                    <span class="checkmark"></span>
+                                    Fresa
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Relleno -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="crema-vainilla">
+                                    <span class="checkmark"></span>
+                                    Crema de Vainilla
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="crema-chocolate">
+                                    <span class="checkmark"></span>
+                                    Crema de Chocolate
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="dulce-leche">
+                                    <span class="checkmark"></span>
+                                    Dulce de Leche
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="mermelada-fresa">
+                                    <span class="checkmark"></span>
+                                    Mermelada de Fresa
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="nutella">
+                                    <span class="checkmark"></span>
+                                    Nutella
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="rellenoPersonalizado" value="cream-cheese">
+                                    <span class="checkmark"></span>
+                                    Cream Cheese
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Cobertura -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="buttercream">
+                                    <span class="checkmark"></span>
+                                    Buttercream
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="fondant">
+                                    <span class="checkmark"></span>
+                                    Fondant
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="ganache">
+                                    <span class="checkmark"></span>
+                                    Ganache de Chocolate
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="cream-cheese-frosting">
+                                    <span class="checkmark"></span>
+                                    Cream Cheese Frosting
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="merengue">
+                                    <span class="checkmark"></span>
+                                    Merengue
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="radio" name="coberturaPersonalizada" value="glaseado">
+                                    <span class="checkmark"></span>
+                                    Glaseado
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Decoración -->
+                        <div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="flores-azucar">
+                                    <span class="checkmark"></span>
+                                    Flores de Azúcar
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="figuras-fondant">
+                                    <span class="checkmark"></span>
+                                    Figuras de Fondant
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="perlas-comestibles">
+                                    <span class="checkmark"></span>
+                                    Perlas Comestibles
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="purpurina-comestible">
+                                    <span class="checkmark"></span>
+                                    Purpurina Comestible
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="frutas-frescas">
+                                    <span class="checkmark"></span>
+                                    Frutas Frescas
+                                </label>
+                                <label class="checkbox-custom">
+                                    <input type="checkbox" name="decoracionPersonalizada" value="chocolate-decorativo">
+                                    <span class="checkmark"></span>
+                                    Chocolate Decorativo
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Descripción adicional -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Descripción adicional o detalles especiales</label>
+                            <textarea id="descripcionPersonalizada" rows="4" placeholder="Describe cualquier detalle especial, colores específicos, temática, etc." class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+                        </div>
+
+                        <!-- Número de personas y presupuesto -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Número de personas aproximado</label>
+                                <input type="number" id="personasPersonalizado" min="1" placeholder="Ej: 15" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Presupuesto aproximado (opcional)</label>
+                                <input type="text" id="presupuestoPersonalizado" placeholder="Ej: 50-80€" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personalización -->
+                <div class="form-section">
+                    <h2 class="section-title text-xl font-semibold mb-4">Personalización</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Colores preferidos</label>
+                            <input type="text" id="colores" placeholder="Ej: Rosa, dorado, blanco..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tema o ocasión</label>
+                            <select id="tema" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                                <option value="">Seleccionar tema</option>
+                                <option value="cumpleanos">Cumpleaños</option>
+                                <option value="boda">Boda</option>
+                                <option value="bautizo">Bautizo</option>
+                                <option value="comunion">Primera Comunión</option>
+                                <option value="graduacion">Graduación</option>
+                                <option value="aniversario">Aniversario</option>
+                                <option value="baby-shower">Baby Shower</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Texto para escribir</label>
+                            <input type="text" id="texto" placeholder="Ej: Feliz Cumpleaños María" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Detalles especiales o comentarios</label>
+                            <textarea id="comentarios" rows="3" placeholder="Describe cualquier detalle especial que quieras incluir..." class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Datos de Entrega -->
+                <div class="form-section">
+                    <h2 class="section-title text-xl font-semibold mb-4">Datos de Entrega</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Fecha de entrega *</label>
+                            <input type="date" id="fechaEntrega" required class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Hora preferida</label>
+                            <select id="horaEntrega" class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                                <option value="">Seleccionar hora</option>
+                                <option value="manana">Mañana (9:00 - 12:00)</option>
+                                <option value="tarde">Tarde (12:00 - 18:00)</option>
+                                <option value="noche">Noche (18:00 - 21:00)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de entrega</label>
+                            <select id="tipoEntrega" class="w-full px-3 py-2 border border-gray-300 rounded-md" onchange="toggleDireccionSection()">
+                                <option value="">Seleccionar tipo de entrega</option>
+                                <option value="recoger">Recoger en tienda</option>
+                                <option value="domicilio">Entrega a domicilio (+5€)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="direccionSection" class="mt-4 hidden">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Dirección de entrega</label>
+                        <textarea id="direccion" rows="2" placeholder="Escribe la dirección completa..." class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
+                    </div>
+                </div>
+
+                <!-- Botón de Envío -->
+                <div class="text-center pt-6">
+                    <button type="submit" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-lg">
+                        Enviar Pedido
+                    </button>
+                </div>
+            </form>
+
+            <!-- Mensaje de éxito -->
+            <div id="successMessage" class="success-message">
+                <h3 class="text-xl font-bold mb-2">¡Pedido Enviado Correctamente!</h3>
+                <p>Hemos recibido tu pedido. Te contactaremos pronto para confirmar los detalles y el presupuesto.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleProductOptions() {
+            const tipoProducto = document.querySelector('input[name="tipoProducto"]:checked');
+            const tartasSection = document.getElementById('tartasSection');
+            const cupcakesSection = document.getElementById('cupcakesSection');
+            const personalizadoSection = document.getElementById('personalizadoSection');
+            
+            // Ocultar todas las secciones primero
+            tartasSection.classList.add('hidden');
+            cupcakesSection.classList.add('hidden');
+            personalizadoSection.classList.add('hidden');
+            
+            if (tipoProducto) {
+                if (tipoProducto.value === 'tartas-cheesecakes') {
+                    tartasSection.classList.remove('hidden');
+                }
+                if (tipoProducto.value === 'cupcakes') {
+                    cupcakesSection.classList.remove('hidden');
+                }
+                if (tipoProducto.value === 'personalizado') {
+                    personalizadoSection.classList.remove('hidden');
+                }
+            }
+        }
+
+        function updateFlavorOptions() {
+            const cantidadSelect = document.getElementById('cantidadCupcakes').value;
+            const cantidadPersonalizada = document.getElementById('cantidadPersonalizada');
+            const cantidadOtra = document.getElementById('cantidadOtra').value;
+            const flavorLabel = document.getElementById('flavorLabel');
+            const flavorsContainer = document.getElementById('flavorsContainer');
+            
+            // Mostrar/ocultar campo de cantidad personalizada
+            if (cantidadSelect === 'otro') {
+                cantidadPersonalizada.classList.remove('hidden');
+            } else {
+                cantidadPersonalizada.classList.add('hidden');
+            }
+            
+            // Determinar la cantidad final
+            let cantidad;
+            if (cantidadSelect === 'otro' && cantidadOtra) {
+                cantidad = parseInt(cantidadOtra);
+            } else if (cantidadSelect && cantidadSelect !== 'otro') {
+                cantidad = parseInt(cantidadSelect);
+            }
+            
+            // Mapeo de cantidad a número máximo de sabores
+            const flavorLimits = {
+                6: 1, 12: 2, 18: 3, 24: 4, 30: 5, 36: 6
+            };
+            
+            // Calcular sabores permitidos para cantidades personalizadas
+            let maxFlavors = 0;
+            if (cantidad) {
+                if (flavorLimits[cantidad]) {
+                    maxFlavors = flavorLimits[cantidad];
+                } else {
+                    // Para cantidades personalizadas, calcular basado en la regla
+                    maxFlavors = Math.min(6, Math.ceil(cantidad / 6));
+                }
+            }
+            
+            if (maxFlavors > 0) {
+                flavorLabel.textContent = `Sabores (máximo ${maxFlavors} sabor${maxFlavors > 1 ? 'es' : ''})`;
+                
+                // Crear checkboxes para sabores en dos columnas
+                flavorsContainer.innerHTML = `
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="rojo-peligroso">
+                            <span class="checkmark"></span>
+                            Rojo Peligroso
+                        </label>
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="zanahoria">
+                            <span class="checkmark"></span>
+                            Zanah'oria
+                        </label>
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="pensamiento-citrico">
+                            <span class="checkmark"></span>
+                            Pensamiento Cítrico
+                        </label>
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="choco-bailes">
+                            <span class="checkmark"></span>
+                            Choco Bailes
+                        </label>
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="yogurt-salvaje">
+                            <span class="checkmark"></span>
+                            Yogurt Salvaje
+                        </label>
+                        <label class="checkbox-custom flavor-option">
+                            <input type="checkbox" name="saboresCupcakes" value="crimen-cuqui">
+                            <span class="checkmark"></span>
+                            Crimen Cuqui
+                        </label>
+                    </div>
+                `;
+                
+                // Agregar listeners para limitar selección
+                const flavorCheckboxes = document.querySelectorAll('input[name="saboresCupcakes"]');
+                flavorCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        const checkedBoxes = document.querySelectorAll('input[name="saboresCupcakes"]:checked');
+                        if (checkedBoxes.length >= maxFlavors) {
+                            // Deshabilitar checkboxes no seleccionados
+                            flavorCheckboxes.forEach(cb => {
+                                if (!cb.checked) {
+                                    cb.disabled = true;
+                                }
+                            });
+                        } else {
+                            // Habilitar todos los checkboxes
+                            flavorCheckboxes.forEach(cb => {
+                                cb.disabled = false;
+                            });
+                        }
+                    });
+                });
+            } else {
+                flavorLabel.textContent = 'Sabores (selecciona la cantidad primero)';
+                flavorsContainer.innerHTML = '';
+            }
+        }
+
+        // Mostrar/ocultar sección de dirección
+        function toggleDireccionSection() {
+            const tipoEntrega = document.getElementById('tipoEntrega').value;
+            const direccionSection = document.getElementById('direccionSection');
+            if (tipoEntrega === 'domicilio') {
+                direccionSection.classList.remove('hidden');
+            } else {
+                direccionSection.classList.add('hidden');
+            }
+        }
+
+        // Establecer fecha mínima (mañana)
+        const fechaInput = document.getElementById('fechaEntrega');
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        fechaInput.min = tomorrow.toISOString().split('T')[0];
+
+        // Manejar envío del formulario
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validar campos requeridos
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const email = document.getElementById('email').value;
+            const fechaEntrega = document.getElementById('fechaEntrega').value;
+            const tipoProducto = document.querySelector('input[name="tipoProducto"]:checked');
+            
+            if (!nombre || !telefono || !email || !fechaEntrega || !tipoProducto) {
+                alert('Por favor, completa todos los campos obligatorios marcados con *');
+                return;
+            }
+            
+            // Recopilar datos del formulario
+            const formData = {
+                nombre: nombre,
+                telefono: telefono,
+                email: email,
+                tipoProducto: tipoProducto.value,
+                fechaEntrega: fechaEntrega,
+                horaEntrega: document.getElementById('horaEntrega').value,
+                tipoEntrega: document.getElementById('tipoEntrega').value,
+                direccion: document.getElementById('direccion').value,
+                colores: document.getElementById('colores').value,
+                tema: document.getElementById('tema').value,
+                texto: document.getElementById('texto').value,
+                comentarios: document.getElementById('comentarios').value
+            };
+            
+            // Agregar datos específicos según el tipo de producto
+            if (tipoProducto.value === 'tartas-cheesecakes') {
+                const tartaSeleccionada = document.querySelector('input[name="tartaSeleccionada"]:checked');
+                formData.tarta = {
+                    tipo: tartaSeleccionada ? tartaSeleccionada.value : '',
+                    tamano: document.getElementById('tamanoTarta').value
+                };
+            }
+            
+            if (tipoProducto.value === 'personalizado') {
+                formData.personalizado = {
+                    descripcion: document.getElementById('descripcionPersonalizada').value,
+                    personas: document.getElementById('personasPersonalizado').value,
+                    presupuesto: document.getElementById('presupuestoPersonalizado').value
+                };
+            }
+            
+            if (tipoProducto.value === 'cupcakes') {
+                const cantidadSelect = document.getElementById('cantidadCupcakes').value;
+                const cantidadOtra = document.getElementById('cantidadOtra').value;
+                const cantidadFinal = cantidadSelect === 'otro' ? cantidadOtra : cantidadSelect;
+                
+                const saboresCupcakes = Array.from(document.querySelectorAll('input[name="saboresCupcakes"]:checked'))
+                    .map(cb => cb.value);
+                    
+                formData.cupcakes = {
+                    cantidad: cantidadFinal,
+                    sabores: saboresCupcakes
+                };
+            }
+            
+            // Simular envío del pedido
+            console.log('Datos del pedido:', formData);
+            
+            // Mostrar mensaje de éxito
+            document.getElementById('orderForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll al mensaje de éxito
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98808d0f4610cfb1',t:'MTc1OTM2OTg0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
