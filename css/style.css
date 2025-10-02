@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: 'SAILORS', sans-serif;
+    font-family: 'SAILORS Condensed', sans-serif;
     background-color: var(--color-light);
     color: var(--color-black);
     line-height: 1.6;
@@ -28,12 +28,12 @@ font-family: 'Berkshire Swash';
 }
 
 h1, h2, .slogan {
-    font-family: 'SAILORS', cursive;
+    font-family: 'ANANAIAS', SANS-SERIF;
     font-weight: 700;
 }
 
 h3, h4{
-    font-family: "SAILORS", sans-serif;
+    font-family: "ANANAIAS", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: var(--color-dark)
@@ -1169,4 +1169,5 @@ ul {
     .modal-product-image {
       max-width: 100%;
     }
+
   }
