@@ -1,0 +1,93 @@
+<!-- Pedidos Section -->
+<section id="pedidos" class="py-12 md:py-20 bg-gradient-to-br from-magenta to-magenta-dark">
+    <div class="container mx-auto px-4">
+        <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-4 text-white text-shadow">Haz tu Pedido</h2>
+        <p class="text-center text-white mb-8 md:mb-12 text-base md:text-lg">Déjate tentar, no podrás resistirte</p>
+        
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-2xl p-6 md:p-8">
+            <form id="order-form" class="space-y-6">
+                <div class="form-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Nombre Completo *</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Email *</label>
+                        <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent" placeholder="tu@email.com">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Teléfono *</label>
+                    <input type="tel" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent" placeholder="+56 9 1234 5678">
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Tipo de Entrega *</label>
+                    <select required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent">
+                        <option value="">Selecciona una opción</option>
+                        <option value="delivery">Delivery a domicilio (+$2.000)</option>
+                        <option value="pickup">Retiro en tienda</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Dirección de Entrega</label>
+                    <textarea class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent" rows="3" placeholder="Dirección completa (solo si seleccionaste delivery)"></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Producto Deseado *</label>
+                    <select required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent">
+                        <option value="">¿Qué tentación eliges?</option>
+                        <option value="torta-chocolate">Torta de Chocolate Pecaminosa - $25.000</option>
+                        <option value="torta-fresa">Torta de Fresas Seductora - $28.000</option>
+                        <option value="cupcake-vainilla">Cupcakes de Vainilla Traviesos - $3.500 c/u</option>
+                        <option value="cupcake-red-velvet">Red Velvet Malicioso - $4.000 c/u</option>
+                        <option value="tiramisu">Tiramisú Adictivo - $6.500</option>
+                        <option value="cheesecake">Cheesecake Prohibido - $7.000</option>
+                    </select>
+                </div>
+                
+                <div class="form-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Tamaño</label>
+                        <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent">
+                            <option value="personal">Personal</option>
+                            <option value="mediano">Mediano (+$5.000)</option>
+                            <option value="grande">Grande (+$10.000)</option>
+                            <option value="familiar">Familiar (+$15.000)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Cantidad</label>
+                        <input type="number" min="1" value="1" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">Decoración Especial</label>
+                        <select class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent">
+                            <option value="ninguna">Ninguna</option>
+                            <option value="mensaje">Mensaje personalizado (+$3.000)</option>
+                            <option value="flores">Flores de azúcar (+$5.000)</option>
+                            <option value="premium">Decoración premium (+$8.000)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">Comentarios Adicionales</label>
+                    <textarea class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta focus:border-transparent" rows="4" placeholder="¿Algún deseo especial? ¿Alergias? ¡Cuéntanos todo!"></textarea>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn-secondary bg-amarillo hover:bg-amarillo-dark text-black font-bold py-3 px-8 md:py-4 md:px-12 rounded-full text-base md:text-lg hover-scale transition-all">
+                        Confirmar Pedido Pecaminoso 😈
+                    </button>
+                    <p class="text-xs md:text-sm text-gray-600 mt-4">
+                        <strong>Nota:</strong> Este es un formulario de demostración. En la versión final se integraría con un sistema de pagos real.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

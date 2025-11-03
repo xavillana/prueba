@@ -1,0 +1,39 @@
+<nav class="justify-between fixed top-0 z-10 flex w-full bg- bg-pink text-white px-6 py-4 shadow-md">
+  <div class="flex justify-between items-baseline-last center w-full">
+    <!-- Logo -->
+    <div class="font-brand text-white font-bold">Maldita Dulzura</div>
+
+    <!-- Botón móvil -->
+    <button aria-label="Abrir menú móvil" onclick="toggleMobileMenu()" class="md:hidden text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Menú desktop -->
+    <ul class="hidden md:flex gap-6 font-open">
+      <li><a href="#" class="hover:text-green-400 transition">Inicio</a></li>
+      <li><a href="#" class="hover:text-green-400 transition">Tienda</a></li>
+      <li><a href="#" class="hover:text-green-400 transition">Pedido</a></li>
+      <li><a href="#" class="hover:text-green-400 transition">Contacto</a></li>
+      <li>
+        <a href="#" class="hover:text-green-400 transition flex items-center gap-1" id="cart-icon">
+          <i class="fa-solid fa-cart-shopping"></i> (<span id="cart-count">0</span>)
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menú móvil -->
+  <ul id="mobileMenu" class="md:hidden mt-4 space-y-2 hidden font-open">
+    <li><a href="#" class="block px-4 py-2 rounded hover:bg-yellow-100">Inicio</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded hover:bg-yellow-100">Tienda</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded hover:bg-yellow-100">Pedido</a></li>
+    <li><a href="#" class="block px-4 py-2 rounded hover:bg-yellow-100">Contacto</a></li>
+    <li>
+      <a href="#" class="w-full px-4 py-2 rounded hover:bg-yellow-100 flex items-center gap-1" id="cart-icon-mobile">
+        <i class="fa-solid fa-cart-shopping"></i> (<span id="cart-count">0</span>)
+      </a>
+    </li>
+  </ul>
+</nav>

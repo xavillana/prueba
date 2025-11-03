@@ -1,0 +1,219 @@
+<!-- Menu Section -->
+<section id="menu" class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="section-title text-3xl md:text-5xl font-bold text-center mb-4 text-magenta">Nuestro Menú Tentador</h2>
+        <p class="text-center text-gray-600 mb-8 md:mb-12 text-base md:text-lg">Cada bocado es una dulce perdición</p>
+        
+        <div class="flex justify-center mb-6 md:mb-8">
+            <div class="filter-buttons flex flex-wrap gap-2 md:gap-4 justify-center">
+                <button onclick="filterMenu('all')" class="filter-btn active bg-magenta text-white px-4 py-2 md:px-6 md:py-2 rounded-full hover:bg-magenta-dark transition-colors text-sm md:text-base">
+                    Todos
+                </button>
+                <button onclick="filterMenu('tortas')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 md:px-6 md:py-2 rounded-full hover:bg-magenta hover:text-white transition-colors text-sm md:text-base">
+                    Tartas y Cheesecakes
+                </button>
+                <button onclick="filterMenu('cupcakes')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 md:px-6 md:py-2 rounded-full hover:bg-magenta hover:text-white transition-colors text-sm md:text-base">
+                    Cupcakes y Muffins
+                </button>
+                <button onclick="filterMenu('postres')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 md:px-6 md:py-2 rounded-full hover:bg-magenta hover:text-white transition-colors text-sm md:text-base">
+                    Pedidos personalizados
+                </button>
+            </div>
+        </div>
+
+        <div id="menu-grid" class="product-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <!-- Los productos se mantienen igual que en el código original -->
+
+           <div class="menu-item tortas bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('torta-chocolate')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Torta de chocolate decadente con cobertura de ganache"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute top-3 right-3 bg-magenta text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Más Vendido
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">MUERTE POR CHOCOLATE</h3>
+                    <p class="text-gray-600 mb-4">¿Por qué conformarse si puedes pecar a lo grande?</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$25.000</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item tortas bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('torta-fresa')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Torta de fresa con crema y frutas frescas"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">TERCIOPELO PELIGROSO</h3>
+                    <p class="text-gray-600 mb-4">¿Podrás frenar esta perversión carmesí sin escapatoria?</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$28.000</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item tortas bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('torta-fresa-nata')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Torta de fresa con nata montada y decoración elegante"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute top-3 right-3 bg-verde text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Nuevo
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">REVOLCON DE FRESA Y NATA</h3>
+                    <p class="text-gray-600 mb-4">¿Serás capaz de compartir esta maliciosa tentación?</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$28.000</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cupcakes -->
+            <div class="menu-item cupcakes bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('cupcake-vainilla')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Cupcakes de vainilla con buttercream y decoración colorida"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">Cupcakes de Vainilla Traviesos</h3>
+                    <p class="text-gray-600 mb-4">Pequeñas tentaciones individuales</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$3.500 c/u</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item cupcakes bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('cupcake-red-velvet')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1617922001439-4a2e65b9bb03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Cupcakes Red Velvet con frosting de queso crema"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute top-3 right-3 bg-magenta text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Popular
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">Red Velvet Malicioso</h3>
+                    <p class="text-gray-600 mb-4">Terciopelo rojo que enamora</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$4.000 c/u</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Postres -->
+            <div class="menu-item postres bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('tiramisu')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Tiramisú clásico italiano con cacao en polvo"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">Tiramisú Adictivo</h3>
+                    <p class="text-gray-600 mb-4">Café y mascarpone en perfecta armonía</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$6.500</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item postres bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('cheesecake')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1524351199678-941a58a3df50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Cheesecake New York con base de galleta y frutos rojos"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute top-3 right-3 bg-amarillo text-black px-3 py-1 rounded-full text-sm font-semibold">
+                        Especial
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">Cheesecake Prohibido</h3>
+                    <p class="text-gray-600 mb-4">Cremosidad que derrite corazones</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$7.000</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto adicional para completar grid -->
+            <div class="menu-item postres bg-white rounded-lg shadow-lg overflow-hidden hover-scale cursor-pointer group" onclick="openModal('profiteroles')">
+                <div class="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                        alt="Profiteroles rellenos de crema con salsa de chocolate"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-magenta mb-2">Profiteroles Seductores</h3>
+                    <p class="text-gray-600 mb-4">Bocados de nube con alma de chocolate</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-verde">$5.500</span>
+                        <button class="bg-amarillo hover:bg-amarillo-dark text-black px-4 py-2 rounded-full font-semibold transition-colors">
+                            Ver más
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
