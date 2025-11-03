@@ -10,25 +10,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="brand-name">Maldita Dulzura</div>
-            </div>
-            <button class="mobile-menu-btn">☰</button>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                    <li><a href="formulariopedido.html">Pedido</a></li>
-                    <li><a href="#carrito">Carrito</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div id="header-container">
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -201,9 +183,35 @@
                 document.querySelector('nav').classList.remove('active');
             });
         });
+
+         <!-- Cargar componentes -->
+    <script>
+        // Función para cargar componentes
+        async function loadComponent(containerId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                const html = await response.text();
+                document.getElementById(containerId).innerHTML = html;
+            } catch (error) {
+                console.error('Error loading component:', error);
+            }
+        }
+
+        // Cargar todos los componentes
+        document.addEventListener('DOMContentLoaded', function() {
+            const components = [
+                { id: 'header-container', file: '/src/modules/header.html' }
+            ];
+
+            components.forEach(component => {
+                loadComponent(component.id, component.file);
+            });
+        });
+
     </script>
 </body>
 </html>
+
 
 
 
